@@ -84,7 +84,10 @@ public class Logic1
     old35(10) --> true
     old35(15) --> false */
     public boolean old35(int n) {
-    if((n%3==0) || (n%5==0)){
+    if((n%3==0) && (n%5==0)) {
+        return false;
+    }
+    else if((n%3==0) || (n%5==0)){
         return true;
     }
     else{
@@ -185,7 +188,7 @@ public class Logic1
     in1To10(11, false) --> false
     in1To10(11, true) --> true */
     public boolean in1To10(int n, boolean outsideMode) {
-      if((n<10) || (n>1) || (outsideMode==true)){
+      if((n<10) || ((n>1) && (outsideMode==true))){
           return true;
       }
       else{
@@ -202,11 +205,11 @@ public class Logic1
     teenSum(10, 13) --> 19
     teenSum(13, 2) --> 19 */
     public int teenSum(int a, int b) {
-      if((a+b<13) || (a+b>19)){
-          return a+b;
+      if((a>=13 && a<=19) || (b>=13 && b<=19)){
+          return 19;
       }
       else{
-          return 19;
+          return a+b;
       }
     }
 
@@ -263,7 +266,7 @@ public class Logic1
           return false;
       }
       else{
-          return false;
+          return true;
       }
     }
 
@@ -304,14 +307,11 @@ public class Logic1
     teaParty(3, 8) --> 0
     teaParty(20, 6) --> 2 */
     public int teaParty(int tea, int candy) {
-      if(tea>=5 && candy >=5){
-          return 1;
-      }
-      else if((tea==2*candy) || (candy==2*tea)){
+      if((tea>=5 && candy>=5) && ((tea>=2*candy) || (candy>=2*tea))){
           return 2;
       }
-      else if(tea<=5 && candy<=5){
-          return 0;
+      else if(tea>=5 && candy >=5){
+          return 1;
       }
       else{
           return 0;
@@ -336,7 +336,7 @@ public class Logic1
       else if(a==b && a==c && b==c){
           return 5;
       }
-      else if(b!=c && a!=c){
+      else if(b!=a && a!=c){
           return 1;
       }
       else{
@@ -439,7 +439,7 @@ public class Logic1
     dateFashion(5, 2) --> 0
     dateFashion(5, 5) --> 1    */
     public int dateFashion(int you, int date) {
-      if(you>=8 && date>=8){
+      if(you>=8 || date>=8){
           return 2;
       }
       else if(you<=2 || date<=2){
@@ -462,14 +462,14 @@ public class Logic1
     fizzString2(3) --> "Fizz!"
     fizzString2(15) --> "FizzBuzz!"*/
     public String fizzString2(int n) {
-      if(n%3==0){
-          return "Fizz!";
+      if(n%3==0 && n%5==0){
+          return "FizzBuzz!";
       }
       else if(n%5==0){
           return "Buzz!";
       }
-      else if(n%3==0 && n%5==0){
-          return "FizzBuzz!";
+      else if(n%3==0){
+          return "Fizz!";
       }
       else{
           return n + "!";
